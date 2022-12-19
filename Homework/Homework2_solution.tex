@@ -72,10 +72,24 @@
             \textbf{(a)} 
             \begin{align*}
                 H(x) &= \ - \sum_{k = 1}^{\infty} p \left(1 - p\right)^{k - 1} \log_2 \left(p\left(1 - p\right)^{k - 1}\right) \\
+                     &= \ -p \sum_{k = 1}^{\infty} \left(1 - p\right)^{k - 1} \log_2 p - p \sum_{k = 1}^{\infty} \left(1 - p\right)^{k - 1} \log_2 \left(1 - p\right)^{k - 1} \\ 
                      &= \ -p \log_2 p \sum_{k = 1}^{\infty} \left(1 - p\right)^{k - 1} - p \log_2 (1 - p) \sum_{k = 1}^{\infty} (k - 1)\left(1 - p\right)^{k - 1} \\
                      &= \ -p \log_2 p \ \frac{1}{1 - \left(1 - p\right)} - p \log_2 (1 - p) \ \frac{1 - p}{\left( 1 - \left(1 - p\right) \right)^2} \\ 
-                     &= \ -p \log_2 p - \frac{1 - p}{p} \log_2 (1 - p) \\ 
-            \end{align*}
+                     &= \ - \log_2 p - \frac{1 - p}{p} \log_2 (1 - p) \\ 
+                \textbf{[Note]} \;\;\; & \sum_{k = 1}^{\infty} (k - 1)\left(1 - p\right)^{k - 1} = 0 + (1 - p) \cdot 1 + (1 - p)^2 \cdot 2 + \cdots = \sum_{k = 0}^{\infty} k \left(1 - p\right)^{k} \\ 
+                                 & \text{Assume} \; \sum_{k = 0}^{\infty} k \left(1 - p\right)^{k} = S_n \;\;\; \text{and} \;\;
+                                 \left\{ 
+                                \begin{aligned}
+                                    S_n &= 0 + (1 - p) \cdot 1 + (1 - p)^2 \cdot 2 + \cdots \\
+                                    (1 - p)S_n &= 0 + 0 + (1 - p)^2 \cdot 1 + \cdots \\ 
+                                \end{aligned}
+                                \right. \\ 
+                                 % & S_n = 0 + (1 - p) \cdot 1 + (1 - p)^2 \cdot 2 + \cdots \\ 
+                                 % & (1 - p)S_n = 0 + 0 + (1 - p)^2 \cdot 1 + \cdots \\ 
+                                 & \Rightarrow S_n - (1 - p)S_n = 0 + (1 - p) + (1 - p)^2 + \cdots \\ 
+                                 & \Rightarrow \left[ 1 - (1 - p) \right] S_n = \sum_{k = 1}^{\infty} \left(1 - p\right)^{k} = \frac{1 - p}{1 - (1 - p)} \\
+                                 & \Rightarrow S_n = \frac{1 - p}{\left[ 1 - (1 - p) \right]^2}
+            \end{align*} 
             \textbf{(b)} 
             Clearly $P(X = k | X > K) = 0$ for $k \leq K$. If $k > K$, then $$P(X = k | X > K) = \frac{P(X = k, X > K)}{P(X > K)} = \frac{p(1 - p)^{k - 1}}{P(X > K)}$$ But, 
             \begin{align*}
